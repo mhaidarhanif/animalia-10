@@ -1,11 +1,20 @@
 import { Hono } from "hono";
+import { dataAnimals } from "./data";
 
 export const animalRoute = new Hono();
 
 animalRoute.get("/", (c) => {
-  return c.json([
-    { id: 1, name: "Antelope" },
-    { id: 2, name: "Bear" },
-    { id: 3, name: "Cat" },
-  ]);
+  return c.json(dataAnimals);
+});
+
+animalRoute.get("/:slug", (c) => {
+  const slug = c.req.param("slug");
+
+  const foundAnimal = dataAnimals.find((animal) => animal.slug === slug);
+
+  if (!foundAnimal) {
+    return c.notFound();
+  }
+
+  return c.json(foundAnimal);
 });
