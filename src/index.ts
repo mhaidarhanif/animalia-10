@@ -1,15 +1,13 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 
+import { animalRoute } from "./modules/animal/route";
+import { commonRoute } from "./modules/common/route";
+
 const app = new Hono();
 
 app.use(logger());
-
-app.get("/", (c) => {
-  return c.json({
-    title: "Animalia API",
-    animals: "/animals",
-  });
-});
+app.route("/", commonRoute);
+app.route("/animals", animalRoute);
 
 export default app;
