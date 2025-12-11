@@ -10,11 +10,11 @@ animalRoute.get("/", (c) => {
 animalRoute.get("/:slug", (c) => {
   const slug = c.req.param("slug");
 
-  const foundAnimal = dataAnimals.find((animal) => animal.slug === slug);
+  const animal = dataAnimals.find((animal) => animal.slug === slug);
 
-  if (!foundAnimal) {
+  if (!animal) {
     return c.notFound();
   }
 
-  return c.json(foundAnimal);
+  return c.json(animal);
 });
