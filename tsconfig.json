@@ -3,6 +3,7 @@
     "strict": true,
     "target": "esnext",
     "module": "esnext",
+    "moduleResolution": "node",
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }
