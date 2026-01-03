@@ -1,5 +1,6 @@
 {
   "name": "animalia-10",
+  "type": "module",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "start": "bun run src/index.ts"

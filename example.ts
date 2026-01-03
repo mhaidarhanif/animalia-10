@@ -6,10 +6,18 @@ const client = new pg.Client({
 
 await client.connect();
 
-const result = await client.query("SELECT * FROM animals");
+type Animal = {
+  id: number;
+  name: string;
+  slug: string;
+};
 
-const animals = result.rows;
-
-console.log({ animals });
-
-await client.end();
+try {
+  const result = await client.query("SELECT * FROM animals");
+  const animals: Animal[] = result.rows;
+  console.log({ animals });
+} catch (error) {
+  console.error("Failed to connect to the database", error);
+} finally {
+  await client.end();
+}
