@@ -17,7 +17,7 @@ model Animal {
   id Int @id @default(autoincrement())
 
   name String
-  slug String @db.VarChar(300)
+  slug String @unique @db.VarChar(300)
 
   currentAge Float
   maxAge     Float
