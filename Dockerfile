@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install app dependencies
-RUN bun install
+RUN bun run build
 
 # Run the application
 CMD ["bun", "start"]
