@@ -1,20 +1,13 @@
 import { prisma } from "./lib/prisma";
 
 async function main() {
-  const newAnimal = await prisma.animal.create({
-    data: {
-      name: "Zebra",
-      slug: "zebra",
-      currentAge: 10,
-      maxAge: 30,
-    },
-  });
+  try {
+    const allAnimals = await prisma.animal.findMany();
 
-  console.log(newAnimal);
-
-  const allAnimals = await prisma.animal.findMany();
-
-  console.log(allAnimals);
+    console.log(allAnimals);
+  } catch (error) {
+    console.error("Failed to create new animal and find animals");
+  }
 }
 
 main()
